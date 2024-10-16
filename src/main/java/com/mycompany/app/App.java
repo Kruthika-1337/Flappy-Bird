@@ -23,6 +23,7 @@ public class App {
        FlappyBird fb=new FlappyBird();
        frame.add(fb);
        frame.pack();
+       fb.requestFocus();
        frame.setVisible(true);
     }
 }
