@@ -18,6 +18,11 @@ public class App {
        frame.setLocationRelativeTo(null);
        frame.setResizable(false);
        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+       //frame.setVisible(true);
+       
+       FlappyBird fb=new FlappyBird();
+       frame.add(fb);
+       frame.pack();
        frame.setVisible(true);
     }
 }
