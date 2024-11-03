@@ -73,6 +73,7 @@ public class FlappyBird extends JPanel implements ActionListener,KeyListener{
       
       boolean gameOver=false;
       double score=0;
+      double highscore=0;
       
       FlappyBird(){
           setPreferredSize(new Dimension(boardWidth,boardHeight));
@@ -146,10 +147,14 @@ public class FlappyBird extends JPanel implements ActionListener,KeyListener{
           }
           
           //scores
-          g.setColor(Color.black);
-          g.setFont(new Font("ALGERIAN",Font.BOLD,32));
+          g.setColor(Color.yellow);
+          g.setFont(new Font("ALGERIAN",Font.PLAIN,32));
           if(gameOver){
-              g.drawString("GAME OVER: "+String.valueOf((int)score), 10, 35);
+              if(highscore<score){
+                  highscore=score;
+              }
+              g.drawString("GAME OVER: \n"+String.valueOf((int)score), 70, 320);
+              g.drawString("High Score: "+(int)highscore, 70, 295);
           }
           else{
               g.drawString(String.valueOf((int)score), 10, 35);
@@ -206,7 +211,6 @@ public class FlappyBird extends JPanel implements ActionListener,KeyListener{
       
       //override
       public void keyPressed(KeyEvent e){
-          if(e.getKeyCode() == KeyEvent.VK_SPACE){
               velocityY = -9;
               if(gameOver){
                   //restart the game by resetting the condition
@@ -218,7 +222,6 @@ public class FlappyBird extends JPanel implements ActionListener,KeyListener{
                   gameLoop.start();
                   placePipesTimer.start();
               }
-          }
       }
      public void keyTyped(KeyEvent e){}
      
