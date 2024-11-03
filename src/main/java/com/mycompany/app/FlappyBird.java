@@ -176,6 +176,7 @@ public class FlappyBird extends JPanel implements ActionListener,KeyListener{
               if(!pipe.passed && bird.x>pipe.x+pipe.width){
                   pipe.passed=true;
                   score+=0.5;//there are two pipes so score is split by half for each pipe->1 for each set of pipe
+                  if (score%5==0)velocityX-=1;
               }
               
               
@@ -216,6 +217,7 @@ public class FlappyBird extends JPanel implements ActionListener,KeyListener{
                   //restart the game by resetting the condition
                   bird.y=birdY;
                   velocityY=0;
+                  velocityX=-4;
                   pipes.clear();
                   score=0;
                   gameOver=false;
